@@ -3,28 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fractal : MonoBehaviour
-{
-    [SerializeField]
-    private GameObject cubePrefab;
-
-    [SerializeField]
-    private int iteration;
-
-    [SerializeField]
-    private float size;
+{ 
+    public GameObject cubePrefab;
+    public int level = 3;
+    public float size = 3.0f;
+    private int count = 0;
 
     void Start()
     {
-        //  This statement create a game object given a prefab, position and rotation.
-        Instantiate(
-            //  This parameter sets a prefab for an instance to be created.
-            cubePrefab,
+        CreateSponge(Vector3.zero, size, level);
+    }
 
-            //  This parameter sets an instance position to (0, 0, 0).
-            Vector3.zero,
+    public void Regenerate()
+    {
+        CreateSponge(Vector3.zero, size, level);
+    }
 
-            //  This parameter sets an instance rotation to (0, 0, 0).
-            Quaternion.identity
-        );
+    void CreateSponge(Vector3 center, float size, int level)
+    {
+        if (level == 0)
+        {
+            GameObject cube = Instantiate(cubePrefab, center, Quaternion.identity);
+            cube.transform.localScale = Vector3.one * size;
+            cube.transform.parent = transform;
+            count++;
+        }
+        else
+        {
+            float newSize = size / 3.0f;
+            for (int x = -1; x <= 1; x++)
+            {
+                for (int y = -1; y <= 1; y++)
+                {
+                    for (int z = -1; z <= 1; z++)
+                    {
+                        if (Mathf.Abs(x) + Mathf.Abs(y) + Mathf.Abs(z) > 1)
+                        {
+                            CreateSponge(center + new Vector3(x * newSize, y * newSize, z * newSize), newSize, level - 1);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+
+

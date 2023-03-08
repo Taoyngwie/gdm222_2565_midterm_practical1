@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 3465591939688976898, guid: 0287af343f4424091a3dd79d04821ad5, type: 3}
-  iteration: 1
-  size: 1
+  level: 2
+  size: 2
 --- !u!1 &303393894
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,14 +644,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -10, y: 1, z: -10}
+  m_LocalRotation: {x: 0.047465183, y: 0.382178, z: -0.01966072, w: 0.9226595}
+  m_LocalPosition: {x: -3.63, y: 1, z: -3.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.89, y: 45, z: 0}
 --- !u!1 &1721829129
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +735,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1721829132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 209131396}
+        m_TargetAssemblyTypeName: Fractal, Assembly-CSharp
+        m_MethodName: Regenerate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1721829132
 MonoBehaviour:
   m_ObjectHideFlags: 0
